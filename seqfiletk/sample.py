@@ -31,8 +31,10 @@ def create_arg_parser() :
     parser.add_argument('--file_format', '-f', type=str, default='fasta', help='file format')
     parser.add_argument('--number_sequences', '-n', type=int, default=1, help='number of sampled sequences')
     parser.add_argument('--seed', '-s', type=int, default=None, help='random seed')
+    return parser
 
 if __name__ == '__main__':
-    args = create_arg_parser()
+    parser = create_arg_parser()
+    args = parser.parse_args()
     with open(args.input) as input, open(args.output) as output :
         sample(input, output, args.file_format, args.number_sequences, args.seed)
